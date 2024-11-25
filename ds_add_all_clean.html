@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add All Information</title>
+</head>
+<body>
+    <h1>Add Patient, Case, and Immunization Information</h1>
+    <form method="POST">
+        <h2>Patient Information</h2>
+        <label>Patient Name:</label>
+        <input type="text" name="patient_name" required><br>
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" required><br>
+        <label>Zipcode:</label>
+        <select name="zipcode" required>
+            <option value="">Select Zipcode</option>
+            {% for zipcode in zipcodes %}
+                <option value="{{ zipcode[0] }}">{{ zipcode[0] }}</option>
+            {% endfor %}
+        </select><br>
+        <label>Gender:</label>
+        <select name="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <h2>Case Information</h2>
+        <label>Disease:</label>
+        <select name="disease_id">
+            <option value="">Select Disease</option>
+            {% for disease in diseases %}
+                <option value="{{ disease[0] }}">{{ disease[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label>Diagnosis Date:</label>
+        <input type="date" name="diagnosis_date"><br>
+        <label>Severity:</label>
+        <select name="severity">
+            <option value="">Select Severity</option>
+            <option value="Mild">Mild</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Severe">Severe</option>
+        </select><br>
+        <label>Notes:</label>
+        <textarea name="notes" placeholder="Enter additional details about the case"></textarea><br>
+
+        <h2>Immunization Information</h2>
+        <label>Vaccine:</label>
+        <select name="vaccine_id">
+            <option value="">Select Vaccine</option>
+            {% for vaccine in vaccines %}
+                <option value="{{ vaccine[0] }}">{{ vaccine[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label>Immunization Date:</label>
+        <input type="date" name="immunization_date"><br>
+        <label>Administered By:</label>
+        <input type="text" name="administered_by"><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
